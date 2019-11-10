@@ -9,7 +9,7 @@ def get_html(url):
         print(r.status_code)
 
 def write_csv(data):
-    with open('Scroutz.csv', 'a') as f:
+    with open('#Namefile.csv', 'a') as f:
         writer = csv.writer(f)
         writer.writerow((data['name'],
                          data['url'],
@@ -17,18 +17,18 @@ def write_csv(data):
 
 def get_page_data(html):
     soup = BeautifulSoup(html, 'lxml')
-    lis = soup.find_all('li', class_='cf card')
-    for li in lis:
+    sourse = soup.find_all('#resurse.html', class_='#name class')
+    for sourse in sourses:
         try:
-            name = li.find('h2').text
+            name = #sourse.find('').text
         except:
             name = ''
         try:
-            url = 'https://www.skroutz.gr' + li.find('h2').find('a').get('href')
+            url = 'site url address' + sourse.find('#').find('#').get('#')
         except:
             url = ''
         try:
-            price = li.find('div', class_='price react-component').find('a', class_='js-sku-link sku-link').text#.replace('€', '')
+            price = sourse.find('#').find('#').text#.replace('€', '$')
         except:
             price = ''
 
@@ -37,9 +37,11 @@ def get_page_data(html):
                 'price': price}
         write_csv(data)
 
+#pagination
+
 def main():
-    pattern = 'https://www.skroutz.gr/c/40/kinhta-thlefwna/m/28/Samsung.html?page={}'
-    for i in range(0, 6):
+    pattern = 'https://www.your site.html?page={}'
+    for i in range(0, 0):
         url = pattern.format(str(i))
         get_page_data(get_html(url))
 
